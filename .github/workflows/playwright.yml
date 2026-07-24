@@ -15,7 +15,16 @@ jobs:
         node-version-file: .nvmrc
         cache: npm
         cache-dependency-path: package-lock.json
+    - name: Restore node_modules cache
+      id: node-modules-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('.nvmrc', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
     - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       run: npm ci
   run-quality-checks:
     timeout-minutes: 30
@@ -28,7 +37,16 @@ jobs:
         node-version-file: .nvmrc
         cache: npm
         cache-dependency-path: package-lock.json
+    - name: Restore node_modules cache
+      id: node-modules-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('.nvmrc', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
     - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Run static quality gates
       run: npm run check
@@ -47,7 +65,16 @@ jobs:
         node-version-file: .nvmrc
         cache: npm
         cache-dependency-path: package-lock.json
+    - name: Restore node_modules cache
+      id: node-modules-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('.nvmrc', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
     - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Compute shard matrix
       id: compute
@@ -89,7 +116,16 @@ jobs:
         node-version-file: .nvmrc
         cache: npm
         cache-dependency-path: package-lock.json
+    - name: Restore node_modules cache
+      id: node-modules-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('.nvmrc', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
     - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Install Playwright browsers
       run: npx playwright install --with-deps
@@ -115,7 +151,16 @@ jobs:
         node-version-file: .nvmrc
         cache: npm
         cache-dependency-path: package-lock.json
+    - name: Restore node_modules cache
+      id: node-modules-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('.nvmrc', 'package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-modules-
     - name: Install dependencies
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Download blob reports
       uses: actions/download-artifact@v8
