@@ -1,3 +1,4 @@
+import { testTags } from "@/config/test-tags";
 import { defineConfig, devices } from "@playwright/test";
 
 const isCI = Boolean(process.env["CI"]);
@@ -30,7 +31,7 @@ export default defineConfig({
               ["junit", { outputFile: "junit-report/results.xml" }],
           ],
     /* Opt out of parallel tests on CI. */
-    ...(isCI ? { workers: 1 } : {}),
+    ...(isCI ? { workers: 1, grepInvert: new RegExp(testTags.skipCI) } : {}),
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         /* Base URL to use in actions like `await page.goto('')`. */

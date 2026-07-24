@@ -2,6 +2,11 @@ import { testTags } from "@/config/test-tags";
 import { expect, test } from "@/fixtures/web.fixture";
 
 test.describe("Case 3 - Rich text editor automation", () => {
+    test.skip(
+        ({ browserName }) => browserName === "webkit",
+        "CKEditor is incompatible with headless WebKit in CI",
+    );
+
     test(
         "types mixed bold, underline and plain formatted text",
         { tag: [testTags.regression, testTags.desktop] },

@@ -4,7 +4,7 @@ import { expect, test } from "@/fixtures/web.fixture";
 test.describe("Case 4 - iFrame and multi-tab handling", () => {
     test(
         "iframe image opens the selenium live project in a new tab",
-        { tag: [testTags.regression, testTags.desktop] },
+        { tag: [testTags.regression, testTags.desktop, testTags.skipCI] },
         async ({ page, context, guru99HomePage }) => {
             await guru99HomePage.open();
 
@@ -30,7 +30,7 @@ test.describe("Case 4 - iFrame and multi-tab handling", () => {
 
     test(
         "testing menu navigates to the selenium tutorial page",
-        { tag: [testTags.regression, testTags.desktop] },
+        { tag: [testTags.regression, testTags.desktop, testTags.skipCI] },
         async ({ page, guru99HomePage, seleniumTutorialPage }) => {
             await guru99HomePage.open();
 
