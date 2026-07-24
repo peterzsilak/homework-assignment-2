@@ -25,7 +25,7 @@
         "mcp:playwright": "playwright-mcp --headless"
     },
     "keywords": [],
-    "author": "",
+    "author": "Peter Zsilak",
     "license": "ISC",
     "type": "commonjs",
     "lint-staged": {

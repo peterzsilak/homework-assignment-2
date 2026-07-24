@@ -36,6 +36,7 @@ test.describe("Case 4 - iFrame and multi-tab handling", () => {
 
             await guru99HomePage.openTestingMenu();
             await guru99HomePage.seleniumLink.click();
+            await page.waitForLoadState("load");
 
             await expect(
                 page,
@@ -44,7 +45,7 @@ test.describe("Case 4 - iFrame and multi-tab handling", () => {
             await expect(
                 seleniumTutorialPage.startLearningButton,
                 "Selenium tutorial page should present its primary call-to-action",
-            ).toBeVisible();
+            ).toBeVisible({ timeout: 15000 });
         },
     );
 });
