@@ -3,7 +3,8 @@ import { expect, test } from "@/fixtures/web.fixture";
 
 test.describe("Case 3 - Rich text editor automation", () => {
     test.skip(
-        ({ browserName }) => browserName === "webkit",
+        ({ browserName }) =>
+            Boolean(process.env["CI"]) && browserName === "webkit",
         "CKEditor is incompatible with headless WebKit in CI",
     );
 
