@@ -50,7 +50,7 @@ export default [
             "playwright/no-element-handle": "error",
             "playwright/no-focused-test": "error",
             "playwright/no-networkidle": "error",
-            "playwright/no-skipped-test": "error",
+            "playwright/no-skipped-test": ["error", { allowConditional: true }],
             "playwright/no-wait-for-timeout": "error",
             "playwright/prefer-locator": "error",
             "playwright/prefer-to-have-count": "error",
