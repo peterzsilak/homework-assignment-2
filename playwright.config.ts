@@ -21,7 +21,7 @@ export default defineConfig({
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: isCI,
     /* Retry on CI only */
-    retries: isCI ? 1 : 4,
+    retries: isCI ? 1 : 2,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: isCI
         ? "blob"
@@ -40,8 +40,11 @@ export default defineConfig({
         /* SauceDemo exposes stable `data-test` attributes. */
         testIdAttribute: "data-test",
 
-        /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: "on-first-retry",
+        /* Collect trace with screenshots when retrying the failed test. */
+        trace: {
+            mode: "on-first-retry",
+            screenshots: true,
+        },
     },
 
     /* Configure projects for major browsers */
