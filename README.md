@@ -1,4 +1,4 @@
-# Genesys
+# Homework Assignment
 
 Playwright and TypeScript test automation project with strict validation gates, fixture-based dependency injection, and a componentized Page Object Model.
 
